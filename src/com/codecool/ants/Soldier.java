@@ -1,5 +1,9 @@
 package com.codecool.ants;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Soldier extends Insect {
     private String[] route;
     public Soldier(int positionX, int positionY) {
@@ -16,53 +20,34 @@ public class Soldier extends Insect {
         String[] coordinates = this.position.split(" ");
         Grid.drawEntities(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), name);
     }
-    int count = 1;
+
+    int i = 0;
+
     @Override
     public void setStep() {
         String[] coordinates = this.position.split(" ");
         Grid.removeEntity(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]));
-        for( int i = 0; i<this.route.length; i++){
+//        for( int i = 0; i<this.route.length; i++){
+        try {
             if (this.step.equals(route[i])) {
                 if(i< this.route.length-1){
                     this.step = this.route[i+ 1];
-                    System.out.println("Soldier" + this.step);
+                    i++;
+                    System.out.println("Soldier " + this.step);
                 }
                 else {
                     this.step= this.route[0];
+                    i = 0;
                 }
-            }
 
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println(exception);
+            this.step= this.position;
         }
 
 
-
-//        int tempX = Integer.parseInt(coordinates[0]);
-//        int tempY = Integer.parseInt(coordinates[1]);
-//        if (count ==1) {
-//            tempY +=1;
-//            coordinates[1] = String.valueOf(tempY);
-//            this.step = coordinates[0] + " " + coordinates[1];
-//            count++;
-//        }
-//        if (count == 2) {
-//            tempX += 1;
-//            coordinates[0] = String.valueOf(tempX);
-//            this.step = coordinates[0]+ " " + coordinates[1];
-//            count++;
-//        }
-//        if (count == 3) {
-//            tempY -=1;
-//            coordinates[1] = String.valueOf(tempY);
-//            this.step = coordinates[0] + " " + coordinates[1];
-//            count++;
-//        }
-//        if (count == 4) {
-//            tempX -= 1;
-//            coordinates[0] = String.valueOf(tempX);
-//            this.step = coordinates[0] + " " + coordinates[1];
-//            count = 1;
-//        }
-//        System.out.println("Soldier " + step);
 
 
     }
@@ -81,8 +66,11 @@ public class Soldier extends Insect {
             }
         }
         catch (ArrayIndexOutOfBoundsException exception) {
-            System.out.println("GRgsgsgerg");
+            System.out.println(exception);
+            this.step = this.position;
         }
         return moves;
     }
+
+
 }

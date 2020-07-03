@@ -1,14 +1,15 @@
 package com.codecool.ants;
 
 public class Queen  extends Insect {
-    private int mood;
+    private static int mood;
+    private static String queenLocation;
 //    private String name;
 
     public Queen() {
         this.name = " Q ";
         this.position = "25 25";
-        this.mood = 0;
-        Grid.queenLocation = this.position;
+        mood = 0;
+        queenLocation = this.position;
 
 
     }
@@ -23,5 +24,17 @@ public class Queen  extends Insect {
     @Override
     public void setStep() {
 
+    }
+
+    public static void setMood(int qMood) {
+        mood = qMood;
+    }
+
+    public static int getMood() {
+        return mood;
+    }
+
+    public static String getQueenLocation() {
+        return queenLocation;
     }
 }

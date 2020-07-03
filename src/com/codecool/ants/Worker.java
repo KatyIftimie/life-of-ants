@@ -33,7 +33,7 @@ public class Worker extends Insect{
                 coordinates[1] = String.valueOf(temp);
             }
             this.step = coordinates[0] + " " + coordinates[1];
-            System.out.println(step);
+            System.out.println("Worker " + step);
         }
         catch (ArrayIndexOutOfBoundsException exception){
             System.out.println(exception);

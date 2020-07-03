@@ -25,9 +25,7 @@ public class Grid {
         }
     }
 
-    public String getQueenLocation() {
-        return queenLocation;
-    }
+
 
     public static void drawEntities(int positionX, int positionY, String name) {
         grid[positionX][positionY] = name;
